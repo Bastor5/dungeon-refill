@@ -4,6 +4,8 @@
   "version": "${version}",
   "name": "Dungeon Refill",
   "description": "Tops up dungeon items (Spirit Leaps, Ender Pearls, Superboom TNT, ...) from your sacks when a Hypixel SkyBlock dungeon run starts. Configure with /dungeonrefill or Mod Menu.",
+  "license": "MIT",
+  "contact": { "sources": "https://github.com/Bastor5/dungeon-refill" },
   "environment": "client",
   "entrypoints": {
     "client": ["dev.dungeonrefill.DungeonRefill"],

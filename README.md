@@ -49,3 +49,7 @@ Launches a real 26.2 client, creates a singleplayer world, fakes Mort's start me
 ## Disclaimer
 
 Automatically sending commands is a grey area under Hypixel's rules. Use at your own risk.
+
+## License
+
+MIT, see [LICENSE](LICENSE).
