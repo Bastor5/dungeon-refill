@@ -1,0 +1,42 @@
+plugins {
+    id "net.fabricmc.fabric-loom" version "1.18.2"
+}
+
+version = project.mod_version
+group = "dev.dungeonrefill"
+
+base { archivesName = "dungeon-refill" }
+
+repositories {
+    maven { url = "https://maven.terraformersmc.com/releases/" }
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+    // Optional: only used to show a config button in Mod Menu
+    compileOnly "com.terraformersmc:modmenu:20.0.2"
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") { expand "version": project.version }
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(25) }
+}
+
+tasks.withType(JavaCompile).configureEach { it.options.release = 25 }
+
+// In-game test: real 26.2 client + singleplayer world, run with ./gradlew runClientGameTest
+fabricApi {
+    configureTests {
+        createSourceSet = true
+        modId = "dungeonrefill-test"
+        eula = true
+        enableGameTests = false
+        enableClientGameTests = true
+    }
+}
