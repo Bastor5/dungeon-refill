@@ -21,6 +21,13 @@ When Mort says *"Here, I found this map when I first entered the dungeon."*, the
 
 Settings are saved in `config/dungeonrefill.json`.
 
+## Versions
+
+| Minecraft | Branch | Download |
+| --- | --- | --- |
+| 26.2 | `main` | [Releases](https://github.com/Bastor5/dungeon-refill/releases) |
+| 26.1.2 | [`mc/26.1.2`](https://github.com/Bastor5/dungeon-refill/tree/mc/26.1.2) | [Releases](https://github.com/Bastor5/dungeon-refill/releases) |
+
 ## Requirements
 
 - Minecraft 26.2
