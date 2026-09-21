@@ -183,6 +183,6 @@ public class RefillScreen extends Screen {
     @Override
     public void onClose() {
         config().save();
-        minecraft.gui.setScreen(parent);
+        minecraft.setScreen(parent);
     }
 }

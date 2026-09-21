@@ -1,6 +1,6 @@
 # Dungeon Refill
 
-A client-side Fabric mod for **Minecraft 26.2** that tops up your dungeon items from your sacks when a Hypixel SkyBlock dungeon run starts.
+A client-side Fabric mod for **Minecraft 26.1.2** that tops up your dungeon items from your sacks when a Hypixel SkyBlock dungeon run starts.
 
 When Mort says *"Here, I found this map when I first entered the dungeon."*, the mod checks your inventory and hotbar for each enabled item (by its SkyBlock ID) and runs `/gfs <ITEM> <missing>` for only what's missing. Commands are spaced 1.5 s apart so Hypixel doesn't rate-limit them.
 
@@ -23,8 +23,8 @@ Settings are saved in `config/dungeonrefill.json`.
 
 ## Requirements
 
-- Minecraft 26.2
-- Fabric Loader 0.19+
+- Minecraft 26.1.2
+- Fabric Loader 0.18.4+
 - Fabric API
 - Mod Menu (optional)
 
@@ -44,7 +44,7 @@ The jar is written to `build/libs/`.
 ./gradlew runClientGameTest
 ```
 
-Launches a real 26.2 client, creates a singleplayer world, fakes Mort's start message and checks the exact `/gfs` commands sent. It also drives the settings menu with simulated mouse and keyboard input.
+Launches a real 26.1.2 client, creates a singleplayer world, fakes Mort's start message and checks the exact `/gfs` commands sent. It also drives the settings menu with simulated mouse and keyboard input.
 
 ## Disclaimer
 

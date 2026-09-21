@@ -78,7 +78,7 @@ public class DungeonRefillClientTest implements FabricClientGameTest {
             context.waitTick();
             context.takeScreenshot("dungeonrefill-menu-edited");
             click(context, button(context, "Done"));
-            context.waitFor(client -> client.gui.screen() == null);
+            context.waitFor(client -> client.screen == null);
 
             JsonObject saved = JsonParser.parseString(Files.readString(RefillConfig.path())).getAsJsonObject();
             check(!savedItem(saved, "ENDER_PEARL").get("enabled").getAsBoolean(), "Ender Pearl should be disabled in " + saved);
@@ -137,7 +137,7 @@ public class DungeonRefillClientTest implements FabricClientGameTest {
 
     private static AbstractWidget find(ClientGameTestContext context, Predicate<GuiEventListener> filter, String what) {
         return context.computeOnClient(client -> {
-            for (GuiEventListener child : client.gui.screen().children()) {
+            for (GuiEventListener child : client.screen.children()) {
                 if (filter.test(child)) return (AbstractWidget) child;
             }
             throw new AssertionError("no widget: " + what);
@@ -167,10 +167,10 @@ public class DungeonRefillClientTest implements FabricClientGameTest {
 
     private static void replaceText(ClientGameTestContext context, EditBox box, String text) {
         click(context, box);
-        context.getInput().holdControl();
-        context.getInput().pressKey(GLFW.GLFW_KEY_A);
-        context.getInput().releaseControl();
-        context.getInput().pressKey(GLFW.GLFW_KEY_BACKSPACE);
+        // Clear the box: jump to the end, then backspace over everything
+        int length = context.computeOnClient(client -> box.getValue().length());
+        context.getInput().pressKey(GLFW.GLFW_KEY_END);
+        for (int i = 0; i < length; i++) context.getInput().pressKey(GLFW.GLFW_KEY_BACKSPACE);
         context.getInput().typeChars(text);
         context.waitTick();
         String value = context.computeOnClient(client -> box.getValue());

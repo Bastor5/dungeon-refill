@@ -89,7 +89,7 @@ public class DungeonRefill implements ClientModInitializer {
     private void tick(Minecraft client) {
         if (openMenuNextTick) {
             openMenuNextTick = false;
-            client.gui.setScreen(new RefillScreen(null));
+            client.setScreen(new RefillScreen(null));
         }
         if (queue.isEmpty()) return;
         if (client.player == null || client.getConnection() == null) {
